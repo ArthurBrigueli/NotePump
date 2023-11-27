@@ -1,0 +1,41 @@
+.container_treino{
+    background-color: #D9D9D9;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    padding: 15px;
+    border-radius: 40px;
+}
+
+.container_data_treino{
+    height: 20%;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 1.3rem;
+}
+
+
+.container_exercicios{
+    background-color: #1B1832;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+
+.container_exercicio{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    margin: 10px;
+    border-radius: 20px;
+}

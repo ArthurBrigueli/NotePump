@@ -1,0 +1,16 @@
+.section{
+    background-color: #373571;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container_note{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}

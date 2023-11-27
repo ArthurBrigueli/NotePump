@@ -1,0 +1,19 @@
+.container{
+    position: absolute;
+    background-color: #373571;
+    border: 2px solid white;
+    width: 30%;
+    height: 65%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+}
+
+.btn_fechar{
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+}
