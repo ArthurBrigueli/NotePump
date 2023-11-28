@@ -1,9 +1,8 @@
 .container{
     border: 2px solid white;
     width: 25%;
-    height: 700px;
     border-radius: 40px;
-    overflow-y: hidden;
+    height: 450px;
 }
 
 
@@ -32,14 +31,13 @@
 }
 
 .container_lista{
-    height: 610px;
-    overflow: hidden;
-    padding: 10px 50px;
+    padding: 0px 50px;
     overflow: hidden;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    height: calc(100% - 90px);
 }
 
 ::-webkit-scrollbar {
