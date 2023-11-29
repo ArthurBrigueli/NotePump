@@ -15,7 +15,7 @@ const NavBar = ()=>{
                     <Link to="/NotePump">NotePump</Link>
                 </li>
                 <li>
-                    <Link to="/NotePump">NotePump</Link>
+                    <Link to="/MinhaLista">Minha Lista</Link>
                 </li>
                 <li>
                     <Link to="/NotePump">NotePump</Link>
