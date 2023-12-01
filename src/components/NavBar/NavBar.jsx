@@ -8,7 +8,7 @@ const NavBar = ()=>{
     return(
         <nav className={styles.navbar}>
             <div className={styles.container_logo}>
-                <img src={logoNav} alt="" srcset={logoNav} />
+                <img src={logoNav} alt=""/>
             </div>
             <ul>
                 <li>
@@ -22,7 +22,7 @@ const NavBar = ()=>{
                 </li>
             </ul>
             <div className={styles.container_profile}>
-                <img src={logoNav} alt="" srcset={logoNav}/>
+                <img src={logoNav} alt=""/>
                 <span>Arthur</span>
             </div>
         </nav>

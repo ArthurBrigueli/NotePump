@@ -24,7 +24,7 @@ const NoteTreino = ({tipo})=> {
                 <button className={styles.btn} value={tipo} onClick={abrirTela}>Adicionar</button>
                 <span>{tipo}</span>
                 {create && (
-                    <PopCreate fecharTela={fecharTela}/>
+                    <PopCreate fecharTela={fecharTela} tipoExercicio={tipo}/>
                 )}
             </div>
             <div className={styles.container_lista}>
