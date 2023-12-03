@@ -10,7 +10,8 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
     const [nome, setNome] = useState('')
     const [peso, setPeso] = useState(null)
     const [exercicios, setExercicios] = useState([{nome, peso}])
-    const [data, setData]= useState('18/02/2004')
+    const [isChecked, setIsChecked] = useState(false)
+    const [data, setData]= useState('')
 
 
     const handleAddInput = ()=>{
@@ -29,6 +30,23 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
         })
     }
 
+    const handleCheckData = ()=>{
+        setIsChecked(!isChecked)
+        if(!isChecked){
+            const data = new Date()
+            const formattedDate = `${data.getDate().toString().padStart(2, '0')}/${
+                (data.getMonth() + 1).toString().padStart(2, '0')
+              }/${data.getFullYear()}`;
+
+            setData(formattedDate)
+        }
+    }
+
+    const handleData = (e)=>{
+        setIsChecked(!isChecked)
+        setData(e)
+    }
+
 
     const handleInput = (index, propriedade, valor) => {
         const novoArray = [...exercicios]
@@ -42,11 +60,11 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
             <button onClick={fecharTela} className={styles.btnFechar}>X</button>
             <div className={styles.container_hora}>
                 <div className={styles.hora}>
-                    <input type="checkbox" name="" id="" />
+                    <input type="checkbox" name="" id="" checked={isChecked} onChange={handleCheckData}/>
                     <span>Hoje</span>
                 </div>
                 <span>ou</span>
-                <input type="date" name="" id="" />
+                <input onChange={(e)=>{handleData(e.target.value)}} type="date" name="" id="" />
             </div>
             <div className={styles.container_add}>
                 <div className={styles.container_btn_add}>
