@@ -49,7 +49,9 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 <input type="date" name="" id="" />
             </div>
             <div className={styles.container_add}>
-                <button onClick={handleAddInput}>+</button>
+                <div className={styles.container_btn_add}>
+                    <button onClick={handleAddInput}>+</button>
+                </div>
                 <div className={styles.list_add}>
                 {[...Array(addInput)].map((_, index) => (
                     <div key={index} className={styles.container_input}>
@@ -58,6 +60,8 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                     </div>
                 ))}
                 </div>
+            </div>
+            <div className={styles.container_btn_salvar}>
                 <button onClick={handleAdd}>Salvar</button>
             </div>
         </div>
