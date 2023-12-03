@@ -1,14 +1,27 @@
+import { useState } from 'react'
 import styles from './Treino.module.css'
 import axios from 'axios'
 
 
 const Treino = ({data, exercicios})=>{
 
+    const [textButton, setTextButton] = useState('x')
 
     const deletar = async(id)=>{
         await axios.post(`http://localhost:3001/api/treino/delet/${id}`)
         console.log('deletado')
     }
+
+
+    const mouseEnter = ()=>{
+        setTextButton('Excluir')
+    }
+
+    const mouseLeave = ()=>{
+        setTextButton('x')
+    }
+
+
 
 
     return(
@@ -30,7 +43,7 @@ const Treino = ({data, exercicios})=>{
                 </div>
             </div>
             
-            <button onClick={()=> {deletar(data.id)}} className={styles.botaoDeletar}>X</button>
+            <button onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} onClick={()=> {deletar(data.id)}} className={styles.botaoDeletar}>{textButton}</button>
 
         </div>
     )

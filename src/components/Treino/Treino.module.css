@@ -1,30 +1,31 @@
 .container_treino{
-    background-color: #D9D9D9;
+    background-color: rgb(205, 205, 205);
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    border-radius: 40px;
     justify-content: space-between;
-    gap:50px;
+    padding: 10px 20px;
+    gap: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
-.container_data_treino{
-    height: 20%;
+
+.container_exercicioo{
     display: flex;
-    align-items: center;
-    color: black;
-    font-size: 1.3rem;
+    flex-direction: column;
+    gap: 10px;
 }
+
 
 
 .container_exercicios{
     background-color: #1B1832;
     border-radius: 30px;
+    padding: 20px 20px;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
-    overflow: hidden;
-    overflow-y: auto;
+    gap: 20px;
     height: 100%;
 }
 
@@ -32,24 +33,31 @@
 .container_exercicio{
     background-color: white;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    font-size: 1.4rem;
-    margin: 10px;
-    border-radius: 20px;
+    border-radius: 50px;
+    font-size: 1.2rem;
 }
 
 .botaoDeletar{
-    background-color: red;
-    border: none;
-    border-radius: 50px;
-
+    background-color: transparent;
+    font-size: 1.2rem;
+    border: 2px solid rgb(255, 105, 105);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    width: 10%;
+    transition: all .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
-
-.container_exercicioo{
-    height: 70%;
-    display: flex;
-    flex-direction: column;
+.botaoDeletar:hover{
+    background-color: rgb(255, 105, 105);
+    color: white;
+    width: 100%;
+    border-radius: 50px;
 }
