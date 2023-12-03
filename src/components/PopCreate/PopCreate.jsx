@@ -9,12 +9,12 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
     const [addInput, setAddInput] = useState(1)
     const [nome, setNome] = useState('')
     const [peso, setPeso] = useState(null)
-    const [exercicios, setExercicios] = useState([])
+    const [exercicios, setExercicios] = useState([{nome, peso}])
     const [data, setData]= useState('18/02/2004')
 
 
     const handleAddInput = ()=>{
-        setExercicios([...exercicios, {nome:nome, peso: peso}]);
+        setExercicios([...exercicios, {nome, peso}]);
         setAddInput(addInput+1)
         setNome('')
         setPeso('')
@@ -22,12 +22,18 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
 
     const handleAdd = async()=>{
         fecharTela()
-        const exerciciosToSend = exercicios.length > 0 ? exercicios : [{ nome, peso }];
         await axios.post('http://localhost:3001/api/treino', {
             data,
             tipo: tipoExercicio,
-            exercicios: exerciciosToSend
+            exercicios
         })
+    }
+
+
+    const handleInput = (index, propriedade, valor) => {
+        const novoArray = [...exercicios]
+        novoArray[index][propriedade] = valor
+        setExercicios(novoArray)
     }
 
 
@@ -47,8 +53,8 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 <div className={styles.list_add}>
                 {[...Array(addInput)].map((_, index) => (
                     <div key={index} className={styles.container_input}>
-                        <input onChange={(e)=>setNome(e.target.value)} type="text" name="" id="" placeholder='Nome'/>
-                        <input onChange={(e) => setPeso(e.target.value)} type="number" name="" id="" placeholder='Peso'/>
+                        <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder='Nome'/>
+                        <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder='Peso'/>
                     </div>
                 ))}
                 </div>
