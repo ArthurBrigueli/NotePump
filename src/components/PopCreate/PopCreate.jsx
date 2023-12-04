@@ -76,8 +76,11 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 <div className={styles.list_add}>
                 {[...Array(addInput)].map((_, index) => (
                     <div key={index} className={styles.container_input}>
-                        <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder='Nome'/>
-                        <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder='Peso'/>
+                        <span>{index+1}.</span>
+                        <div className={styles.input}>
+                            <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder='Nome'/>
+                            <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder='Peso'/>
+                        </div>
                     </div>
                 ))}
                 </div>
