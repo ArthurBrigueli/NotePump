@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './PopCreate.module.css'
 import axios from 'axios'
 import useAddTreino from '../../hooks/useAddTreino'
@@ -12,6 +12,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
     const [exercicios, setExercicios] = useState([{nome, peso}])
     const [isChecked, setIsChecked] = useState(false)
     const [date, setDate]= useState('')
+    const containerRef = useRef(null);
 
     const handleAdd = useAddTreino()
 
@@ -19,6 +20,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
     const handleAddInput = ()=>{
         setExercicios([...exercicios, {nome, peso}]);
         setAddInput(addInput+1)
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
         setNome('')
         setPeso('')
     }
@@ -69,7 +71,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 <div className={styles.container_btn_add}>
                     <button onClick={handleAddInput}>+</button>
                 </div>
-                <div className={styles.list_add}>
+                <div ref={containerRef} className={styles.list_add}>
                 {[...Array(addInput)].map((_, index) => (
                     <div key={index} className={styles.container_input}>
                         <span>{index+1}.</span>
