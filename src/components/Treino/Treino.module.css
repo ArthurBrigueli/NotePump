@@ -61,3 +61,31 @@
     width: 100%;
     border-radius: 50px;
 }
+
+.botaoEditar{
+    background-color: rgb(75, 75, 75);
+    font-size: 1.2rem;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 10%;
+    transition: all .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.botaoEditar:hover{
+    background-color: rgb(130, 130, 130);
+    color: white;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.container_btn_op{
+    display: flex;
+    justify-content: space-between;
+}
