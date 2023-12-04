@@ -44,7 +44,10 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
 
     const handleData = (e)=>{
         setIsChecked(!isChecked)
-        setData(e)
+        const data = e.split('-')
+        const dataFormat = `${data[2]}/${data[1]}/${data[0]}`
+
+        setData(dataFormat)
     }
 
 
