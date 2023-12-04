@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './PopCreate.module.css'
 import axios from 'axios'
-
+import useAddTreino from '../../hooks/useAddTreino'
 
 const PopCreate = ({fecharTela, tipoExercicio})=> {
 
@@ -11,7 +11,9 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
     const [peso, setPeso] = useState(null)
     const [exercicios, setExercicios] = useState([{nome, peso}])
     const [isChecked, setIsChecked] = useState(false)
-    const [data, setData]= useState('')
+    const [date, setDate]= useState('')
+
+    const handleAdd = useAddTreino()
 
 
     const handleAddInput = ()=>{
@@ -21,13 +23,9 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
         setPeso('')
     }
 
-    const handleAdd = async()=>{
+    const handleAddExercicio = async()=>{
         fecharTela()
-        await axios.post('http://localhost:3001/api/treino', {
-            data,
-            tipo: tipoExercicio,
-            exercicios
-        })
+        handleAdd(date, tipoExercicio, exercicios)
     }
 
     const handleCheckData = ()=>{
@@ -38,7 +36,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 (data.getMonth() + 1).toString().padStart(2, '0')
               }/${data.getFullYear()}`;
 
-            setData(formattedDate)
+            setDate(formattedDate)
         }
     }
 
@@ -46,8 +44,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
         setIsChecked(!isChecked)
         const data = e.split('-')
         const dataFormat = `${data[2]}/${data[1]}/${data[0]}`
-
-        setData(dataFormat)
+        setDate(dataFormat)
     }
 
 
@@ -86,7 +83,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 </div>
             </div>
             <div className={styles.container_btn_salvar}>
-                <button onClick={handleAdd}>Salvar</button>
+                <button onClick={handleAddExercicio}>Salvar</button>
             </div>
         </div>
     )

@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import styles from './Treino.module.css'
 import axios from 'axios'
+import useDeleteTreino from '../../hooks/useDeleteTreino'
 
 
 const Treino = ({data, exercicios})=>{
 
     const [textButton, setTextButton] = useState('x')
+    const handleDelete = useDeleteTreino()
 
     const deletar = async(id)=>{
-        await axios.post(`http://localhost:3001/api/treino/delet/${id}`)
+        handleDelete(id)
         console.log('deletado')
     }
 
