@@ -68,7 +68,7 @@ app.post('/api/treino', (req, res)=>{
 
 
 //post delet treino
-app.post('/api/treino/delet/:id', (req, res)=>[
+app.post('/api/treino/delet/:id', (req, res)=>{
     db.query(`DELETE FROM treino WHERE id = ?`,[req.params.id], (erro, result)=>{
         if(erro){
             res.status(500).send('erro para excluir')
@@ -81,7 +81,34 @@ app.post('/api/treino/delet/:id', (req, res)=>[
         }
         res.status(204).send()
     })
-])
+})
+
+
+app.put('/api/treino/edit/:id', (req, res) => {
+    const { id } = req.params;
+    const { data, tipo, exercicios } = req.body;
+  
+    // Atualiza os dados no MySQL usando a chave primária (id)
+    db.query(
+      'UPDATE treino SET data = ?, tipo = ?, exercicios = ? WHERE id = ?',
+      [data, tipo, JSON.stringify(exercicios), id],
+      (err, results) => {
+        if (err) {
+          console.error(err);
+          res.status(500).json({ error: 'Erro ao atualizar dados no MySQL' });
+          return;
+        }
+  
+        // Verifica se algum registro foi atualizado
+        if (results.affectedRows === 0) {
+          res.status(404).json({ error: 'Registro não encontrado' });
+          return;
+        }
+  
+        res.json({ mensagem: 'Dados atualizados com sucesso' });
+      }
+    );
+  });
 
 
 
