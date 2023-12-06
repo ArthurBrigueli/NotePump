@@ -12,7 +12,6 @@ const Treino = ({data, exercicios})=>{
 
     const deletar = async(id)=>{
         handleDelete(id)
-        console.log('deletado')
     }
 
     const editar = async()=>{
