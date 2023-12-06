@@ -2,7 +2,8 @@
     border: 2px solid white;
     width: 25%;
     border-radius: 40px;
-    height: 400px;
+    height: calc(80vh - 80px);
+    
 }
 
 

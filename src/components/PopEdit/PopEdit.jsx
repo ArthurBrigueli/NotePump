@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
-import styles from './PopCreate.module.css'
+import styles from './PopEdit.module.css'
 import axios from 'axios'
 import useAddTreino from '../../hooks/useAddTreino'
 
-const PopCreate = ({fecharTela, tipoExercicio})=> {
+const PopEdit = ({fecharTela, data, tipoExercicio})=> {
 
 
-    const [addInput, setAddInput] = useState(1)
+    const [addInput, setAddInput] = useState(0)
     const [nome, setNome] = useState('')
     const [peso, setPeso] = useState(null)
     const [exercicios, setExercicios] = useState([{nome, peso}])
@@ -25,9 +25,10 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
         setPeso('')
     }
 
-    const handleAddExercicio = async()=>{
+    const handleEdit = async()=>{
         fecharTela()
-        handleAdd(date, tipoExercicio, exercicios)
+        console.log(data)
+        
     }
 
     const handleCheckData = ()=>{
@@ -68,27 +69,24 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
                 <input onChange={(e)=>{handleData(e.target.value)}} type="date" name="" id="" />
             </div>
             <div className={styles.container_add}>
-                <div className={styles.container_btn_add}>
-                    <button onClick={handleAddInput}>+</button>
-                </div>
                 <div ref={containerRef} className={styles.list_add}>
-                {[...Array(addInput)].map((_, index) => (
+                {data.exercicios.map((exercicio, index)=>(
                     <div key={index} className={styles.container_input}>
                         <span>{index+1}.</span>
                         <div className={styles.input}>
-                            <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder='Nome'/>
-                            <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder='Peso'/>
+                            <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder='Nome' value={exercicio.nome}/>
+                            <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder='Peso' value={exercicio.peso}/>
                         </div>
                     </div>
                 ))}
                 </div>
             </div>
             <div className={styles.container_btn_salvar}>
-                <button onClick={handleAddExercicio}>Salvar</button>
+                <button onClick={handleEdit}>Salvar</button>
             </div>
         </div>
     )
 }
 
 
-export default PopCreate
+export default PopEdit
