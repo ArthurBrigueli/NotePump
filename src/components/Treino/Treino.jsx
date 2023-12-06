@@ -1,8 +1,15 @@
 import styles from './Treino.module.css'
+import axios from 'axios'
+import deletTreino from '../../hooks/deletTreino'
 
 
 const Treino = ({data, exercicios})=>{
 
+    const [id, setId] = deletTreino()
+
+    const removeTreino = async()=>{
+        setId(data.id)
+    }
 
     return(
         <div className={styles.container_treino}>
@@ -20,7 +27,7 @@ const Treino = ({data, exercicios})=>{
                 ))}
                 
             </div>
-
+            <button onClick={removeTreino}>X</button>
         </div>
     )
 }

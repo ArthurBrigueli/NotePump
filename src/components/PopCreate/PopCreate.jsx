@@ -19,7 +19,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
         setNome('')
         setPeso('')
     }
-
+    
     const handleAdd = async()=>{
         fecharTela()
         const exerciciosToSend = exercicios.length > 0 ? exercicios : [{ nome, peso }];
