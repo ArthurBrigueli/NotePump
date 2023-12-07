@@ -1,20 +1,28 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './PopEdit.module.css'
 import axios from 'axios'
-import useAddTreino from '../../hooks/useAddTreino'
+import useEditTreino from '../../hooks/useEditTreino'
 
-const PopEdit = ({fecharTela, data, tipoExercicio})=> {
+const PopEdit = ({fecharTela, data})=> {
 
 
-    const [addInput, setAddInput] = useState(0)
+    const [addInput, setAddInput] = useState(data.exercicios.length)
     const [nome, setNome] = useState('')
     const [peso, setPeso] = useState(null)
-    const [exercicios, setExercicios] = useState([{nome, peso}])
+    const [exercicios, setExercicios] = useState(data.exercicios)
     const [isChecked, setIsChecked] = useState(false)
-    const [date, setDate]= useState('')
+    const [date, setDate]= useState(data.data)
     const containerRef = useRef(null);
 
-    const handleAdd = useAddTreino()
+    const EditTreino = useEditTreino()
+
+
+
+    const handleEdit = async()=>{
+        fecharTela()
+        EditTreino(data.id, date, data.tipo, exercicios)
+        
+    }
 
 
     const handleAddInput = ()=>{
@@ -23,12 +31,7 @@ const PopEdit = ({fecharTela, data, tipoExercicio})=> {
         containerRef.current.scrollTop = containerRef.current.scrollHeight;
         setNome('')
         setPeso('')
-    }
 
-    const handleEdit = async()=>{
-        fecharTela()
-        console.log(data)
-        
     }
 
     const handleCheckData = ()=>{
@@ -51,9 +54,7 @@ const PopEdit = ({fecharTela, data, tipoExercicio})=> {
 
 
     const handleInput = (index, propriedade, valor) => {
-        const novoArray = [...exercicios]
-        novoArray[index][propriedade] = valor
-        setExercicios(novoArray)
+        exercicios[index][propriedade] = valor
     }
 
 
@@ -69,13 +70,16 @@ const PopEdit = ({fecharTela, data, tipoExercicio})=> {
                 <input onChange={(e)=>{handleData(e.target.value)}} type="date" name="" id="" />
             </div>
             <div className={styles.container_add}>
+                <div className={styles.container_btn_add}>
+                    <button onClick={handleAddInput}>+</button>
+                </div>
                 <div ref={containerRef} className={styles.list_add}>
-                {data.exercicios.map((exercicio, index)=>(
+                {[...Array(addInput)].map((_, index) => (
                     <div key={index} className={styles.container_input}>
                         <span>{index+1}.</span>
                         <div className={styles.input}>
-                            <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder='Nome' value={exercicio.nome}/>
-                            <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder='Peso' value={exercicio.peso}/>
+                            <input onChange={(e)=>handleInput(index, 'nome', e.target.value)} type="text" name="" id="" placeholder={exercicios[index]['nome']}/>
+                            <input onChange={(e)=>handleInput(index, 'peso', e.target.value)} type="number" name="" id="" placeholder={exercicios[index]['peso']}/>
                         </div>
                     </div>
                 ))}
