@@ -4,7 +4,6 @@ import axios from "axios"
 const useTreino = (url)=>{
 
     const [data, setData] = useState([])
-    const [update, setUpdate] = useState(false)
 
     useEffect(()=>{
         const fetchData = async()=>{
@@ -12,8 +11,8 @@ const useTreino = (url)=>{
             setData(json.data)
         }
         fetchData()
-    }, [update])
-    return {data, setUpdate}
+    }, [url])
+    return {data}
 }
 
 
