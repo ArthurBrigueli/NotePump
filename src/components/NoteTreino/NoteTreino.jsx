@@ -28,7 +28,7 @@ const NoteTreino = ({tipo})=> {
                 )}
             </div>
             <div className={styles.container_lista}>
-                {data.map((item, index)=>(
+                {data && data.map((item, index)=>(
                     <Treino key={index} data={item} exercicios={item.exercicios}/>
                 ))}
                 

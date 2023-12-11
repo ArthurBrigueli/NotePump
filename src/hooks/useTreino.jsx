@@ -3,7 +3,7 @@ import axios from "axios"
 
 const useTreino = (url)=>{
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState(null)
 
     useEffect(()=>{
         const fetchData = async()=>{
