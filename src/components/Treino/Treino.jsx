@@ -11,7 +11,7 @@ const Treino = ({data, exercicios})=>{
     const [editPop, setEditPop] = useState(false)
 
     const deletar = async(id)=>{
-        handleDelete(id)
+        handleDelete(`http://localhost:3001/api/treino/delet/${id}`)
     }
 
     const editar = async()=>{

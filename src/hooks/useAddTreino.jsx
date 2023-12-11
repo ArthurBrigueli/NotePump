@@ -3,9 +3,9 @@ import axios from "axios";
 
 
 
-const useAddTreino = ()=>{
+const useAddTreino = (url)=>{
     const handleAdd = async(data, tipo, exercicios)=>{
-        const response = await axios.post('http://localhost:3001/api/treino', {
+        const response = await axios.post(url, {
             data: data,
             tipo: tipo,
             exercicios: exercicios

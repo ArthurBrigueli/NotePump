@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-const useTreino = (url, tipo)=>{
+const useTreino = (url)=>{
 
     const [data, setData] = useState([])
+    const [update, setUpdate] = useState(false)
 
     useEffect(()=>{
         const fetchData = async()=>{
@@ -11,8 +12,8 @@ const useTreino = (url, tipo)=>{
             setData(json.data)
         }
         fetchData()
-    }, [tipo])
-    return {data}
+    }, [update])
+    return {data, setUpdate}
 }
 
 

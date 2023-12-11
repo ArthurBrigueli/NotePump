@@ -14,7 +14,7 @@ const PopCreate = ({fecharTela, tipoExercicio})=> {
     const [date, setDate]= useState('')
     const containerRef = useRef(null);
 
-    const handleAdd = useAddTreino()
+    const handleAdd = useAddTreino(`http://localhost:3001/api/treino`)
 
 
     const handleAddInput = ()=>{

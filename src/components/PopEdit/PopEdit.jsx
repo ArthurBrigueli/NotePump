@@ -14,7 +14,7 @@ const PopEdit = ({fecharTela, data})=> {
     const [date, setDate]= useState(data.data)
     const containerRef = useRef(null);
 
-    const EditTreino = useEditTreino()
+    const EditTreino = useEditTreino(`http://localhost:3001/api/treino/edit/${data.id}`)
 
 
 

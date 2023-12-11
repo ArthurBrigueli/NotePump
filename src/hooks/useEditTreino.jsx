@@ -2,10 +2,10 @@
 import axios from "axios";
 import { useEffect } from "react";
 
-const useEditTreino = () => {
+const useEditTreino = (url) => {
   const EditTreino = async (id, data, tipo, exercicios) => {
     try {
-      const response = await axios.put(`http://localhost:3001/api/treino/edit/${id}`, {
+      const response = await axios.put(url, {
         data,
         tipo,
         exercicios

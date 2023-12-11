@@ -2,8 +2,8 @@ import axios from "axios"
 
 
 const useDeleteTreino = ()=>{
-    const handleDelete = async(id)=>{
-        const response = await axios.post(`http://localhost:3001/api/treino/delet/${id}`)
+    const handleDelete = async(url)=>{
+        const response = await axios.post(url)
     }
 
     return handleDelete
