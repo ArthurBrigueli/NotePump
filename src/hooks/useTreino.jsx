@@ -1,25 +1,18 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-const useTreino = (tipo)=>{
+const useTreino = (url, tipo)=>{
 
     const [data, setData] = useState([])
 
     useEffect(()=>{
-        const fetch = async()=>{
-
-            let api = "http://localhost:3001/api/treino"
-
-            if(tipo){
-                api = `http://localhost:3001/api/treino/tipo/${tipo}`
-            }
-
-            const data = await axios.get(api)
-            setData(data.data)
+        const fetchData = async()=>{
+            const json = await axios.get(url)
+            setData(json.data)
         }
-        fetch()
-    }, [data])
-    return [data]
+        fetchData()
+    }, [tipo])
+    return {data}
 }
 
 

@@ -6,7 +6,7 @@ import PopCreate from '../PopCreate/PopCreate'
 
 const NoteTreino = ({tipo})=> {
 
-    const [data] = useTreino(tipo)
+    const {data} = useTreino(`http://localhost:3001/api/treino/tipo/${tipo}`, tipo)
 
     const [create, setCreate] = useState(false)
 
