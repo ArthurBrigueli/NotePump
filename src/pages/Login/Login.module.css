@@ -1,0 +1,55 @@
+.section{
+    display: flex;
+    flex-direction: column;
+    background-color: #373571;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.container{
+    height: 70%;
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15%;
+    margin-left: 10%;
+}
+
+.containerInput{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+
+}
+
+.containerInput input{
+    height: 40px;
+    width: 80%;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 1.1rem;
+
+}
+
+.containerBtn{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.containerBtn input{
+    width: 80%;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
