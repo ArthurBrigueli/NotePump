@@ -2,6 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import db from './db.js'
 import cors from 'cors'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 const app = express()
 const port = 3001
@@ -46,6 +48,28 @@ app.get('/api/treino/tipo/:tipo', (req, res)=>{
         res.json(result)
     })
 })
+
+
+app.post('/api/login', (req, res) => {
+    let { usuario, senha } = req.body;
+  
+    db.query('SELECT * FROM users WHERE usuario = ?', [usuario], async (erro, result) => {
+      if (erro || result.length === 0) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+  
+      let storeHash = result[0].senha;
+  
+      if (storeHash === senha) {
+        const { id, usuario, nome } = result[0];
+        const token = jwt.sign({ id: result[0].id, usuario: result[0].usuario }, 'chave_secreta', { expiresIn: '1h' });
+  
+        return res.json({ message: 'Login successful', token, usuario, nome });
+      } else {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+    });
+  });
 
 
 
@@ -109,7 +133,6 @@ app.put('/api/treino/edit/:id', (req, res) => {
       }
     );
   });
-
 
 
 app.listen(port, ()=>{

@@ -6,24 +6,26 @@ import {useLocation} from 'react-router-dom'
 import NotePump from './pages/NotePump/NotePump';
 import MinhaLista from './pages/MinhaLista/MinhaLista';
 import Login from './pages/Login/Login';
+import { AuthProvider } from '../Context/AuthContext';
 
 function App() {
 
-
-  const isLocationNavBar = location.pathname !== '/login'
+  const isLocationNavBar = location.pathname !== '/login';
 
   return (
     <>
-      <Router>
-        <div>
-          {isLocationNavBar && <NavBar/>}
-          
-          <Routes>
-            <Route path='/NotePump' exact Component={NotePump}/>
-            <Route path='/MinhaLista' Component={MinhaLista}/>
-            <Route path='/login' Component={Login}/>
-          </Routes>
-        </div>
+      <Router key={location.pathname}>
+        <AuthProvider>
+          <div>
+            {isLocationNavBar && <NavBar />}
+            
+            <Routes>
+              <Route path="/NotePump" element={<NotePump />} />
+              <Route path="/MinhaLista" element={<MinhaLista />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </div>
+        </AuthProvider>
       </Router>
     </>
   )
