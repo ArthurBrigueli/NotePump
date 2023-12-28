@@ -2,14 +2,12 @@ import styles from './NavBar.module.css'
 import { Link } from 'react-router-dom';
 import logoNav from '../../img/logoNav.jpg'
 import { useState } from 'react';
-import { useAuth } from '../../../Context/AuthContext';
 
 
 const NavBar = ()=>{
 
 
     const [menuToggle, setMenuToggle] = useState(false)
-    const { token, logout } = useAuth();
 
 
     const handleToggle = ()=>{
@@ -35,9 +33,7 @@ const NavBar = ()=>{
                 </ul>
                 <div className={styles.container_profile}>
                     <img src={logoNav} alt=""/>
-                    <span>{token && (
-                        <button onClick={logout}>Logout</button>
-                    )}</span>
+                    <span>Arthur</span>
                 </div>
             </div>
             <div className={styles.menuToggle} onClick={handleToggle}>

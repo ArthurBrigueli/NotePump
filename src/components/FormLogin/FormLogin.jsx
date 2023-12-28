@@ -1,15 +1,10 @@
 import { useContext, useState } from 'react'
 import styles from './formLogin.module.css'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../../../Context/AuthContext'
 
 const FormLogin = ()=>{
 
     const [usuario, setUsuario] = useState('')
     const [senha, setSenha] = useState('')
-    const navigate = useNavigate()
-    const { login } = useAuth();
 
     
     
@@ -17,15 +12,6 @@ const FormLogin = ()=>{
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
-        try {
-            const response = await axios.post('http://localhost:3001/api/login', { usuario, senha });
-            const { message, token } = response.data;
-      
-            login(token);
-            navigate('/NotePump')
-        } catch (error) {
-            console.error('Erro ao fazer login', error);
-        }
     }
 
     return(
